@@ -1,3 +1,9 @@
+liburlmodel (0.1.2) unstable; urgency=medium
+
+  * add dbgsrc package
+
+ -- Ivan Gagis <igagis@gmail.com>  Fri, 14 Apr 2023 14:51:55 +0300
+
 liburlmodel (0.1.1) unstable; urgency=medium
 
   * initial release
