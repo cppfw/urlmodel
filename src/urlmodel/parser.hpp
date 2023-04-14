@@ -65,6 +65,8 @@ class parser
 	std::string parsed_query_name;
 
 public:
+	parser() = default;
+
 	urlmodel::url url;
 
 	/**
