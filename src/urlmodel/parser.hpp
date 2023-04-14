@@ -32,6 +32,9 @@ SOFTWARE.
 
 namespace urlmodel {
 
+// TODO: why lint complains?
+// "error: an exception may be thrown in function 'parser'"
+// NOLINTNEXTLINE(bugprone-exception-escape)
 class parser
 {
 	enum class state {
@@ -65,8 +68,6 @@ class parser
 	std::string parsed_query_name;
 
 public:
-	parser() = default;
-
 	urlmodel::url url;
 
 	/**

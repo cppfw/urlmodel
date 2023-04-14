@@ -43,6 +43,9 @@ struct path_less {
 	bool operator()(utki::span<const std::string> a, utki::span<const std::string> b) const noexcept;
 };
 
+// TODO: why lint complains?
+// "error: an exception may be thrown in function 'url'"
+// NOLINTNEXTLINE(bugprone-exception-escape)
 class url
 {
 public:
