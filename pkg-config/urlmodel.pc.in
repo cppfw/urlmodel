@@ -1,0 +1,9 @@
+Name: urlmodel   # human-readable name
+Description: URL model C++ library # human-readable description
+Version: $(version)
+URL: https://github.com/cppfw/urlmodel
+Requires:
+Conflicts:
+Libs: -lurlmodel
+Libs.private:
+Cflags:
