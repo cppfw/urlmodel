@@ -7,7 +7,7 @@ this_name := tests
 
 this_srcs := $(call prorab-src-dir, src)
 
-this_u_urlmodel_lib := ../../src/out/$(c)/liburlmodel.so
+this_u_urlmodel_lib := $(abspath $(d)../../src/out/$(c)/liburlmodel.so)
 
 this_cxxflags += -I ../../src
 
