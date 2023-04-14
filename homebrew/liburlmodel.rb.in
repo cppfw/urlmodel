@@ -1,0 +1,22 @@
+class Liburlmodel < Formula
+  desc "URL model C++ library."
+  homepage "https://github.com/cppfw/urlmodel"
+  url "https://github.com/cppfw/urlmodel/archive/$(version).tar.gz"
+  sha256 "$(sha256)"
+
+  depends_on "prorab" => :build
+  depends_on "prorab-extra" => :build
+  depends_on "tst" => :build
+  depends_on "utki"
+
+  # use gmake here because otherwise homebrew uses default Mac's make which is of too old version 3.81
+  def install
+    ENV['PATH'] += ':/usr/local/bin'
+    # install from src directory because tests require submodules
+    system "/usr/local/opt/make/libexec/gnubin/make", "--directory", "src", "install", "PREFIX=#{prefix}", "lint=off"
+  end
+
+  test do
+    system "/usr/local/opt/make/libexec/gnubin/make", "test"
+  end
+end
