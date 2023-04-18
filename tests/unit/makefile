@@ -13,6 +13,8 @@ this_cxxflags += -I ../../src
 
 this_ldlibs += -ltst -lutki $(this_u_urlmodel_lib)
 
+this_no_install := true
+
 $(eval $(prorab-build-app))
 
 $(eval $(call prorab-depend, $(prorab_this_name), $(this_u_urlmodel_lib)))
