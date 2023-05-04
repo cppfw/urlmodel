@@ -27,7 +27,9 @@ Description: debugging sources for liburlmodel$(soname) package.
 Package: liburlmodel-dev
 Section: libdevel
 Architecture: any
-Depends: liburlmodel$(soname) (= ${binary:Version}), ${misc:Depends}
+Depends:
+	libutki-dev,
+	liburlmodel$(soname) (= ${binary:Version}), ${misc:Depends}
 Suggests: liburlmodel-doc
 Description: cross-platform URL model C++ library.
  URL model library.
