@@ -21,7 +21,7 @@ class UrlmodelConan(ConanFile):
 		self.requires("utki/[>=1.1.202]@cppfw/main", transitive_headers=True)
 
 	def build_requirements(self):
-		self.test_requires("tst/[>=0.3.28]@cppfw/main")
+		self.test_requires("tst/[>=0.3.28]@cppfw/main", options={"headers": True, "libs": True})
 
 	def config_options(self):
 		if self.settings.os == "Windows":
