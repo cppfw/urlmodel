@@ -31,12 +31,12 @@ class UrlmodelConan(ConanFile):
 
 	# save commit and remote URL to conandata.yml for packaging
 	def export(self):
-		# by default working directory is where conanfily.py resides,
-		# but we want git to work in the root of the repo,
-		# so we use Git(self).get_repo_root()
-		git = Git(self, Git(self).get_repo_root())
+		git = Git(self)
 		scm_url = git.get_remote_url()
-		scm_commit = git.get_commit()
+		# NOTE: Git.get_commit() doesn't work properly,
+		# it gets latest commit of the folder in which conanfile.py resides
+		# so we use git.run("rev-parse HEAD") instead
+		scm_commit = git.run("rev-parse HEAD") # get current commit
 		update_conandata(self, {"sources": {"commit": scm_commit, "url": scm_url}})
 
 	def source(self):
