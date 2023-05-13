@@ -34,8 +34,9 @@ class UrlmodelConan(ConanFile):
 		git = Git(self)
 		scm_url = git.get_remote_url()
 		# NOTE: Git.get_commit() doesn't work properly,
-		# it gets latest commit of the folder in which conanfile.py resides
-		# so we use git.run("rev-parse HEAD") instead
+		# it gets latest commit of the folder in which conanfile.py resides.
+		# So, we use "git rev-parse HEAD" instead as it gets the actual HEAD
+		# commit regardless of the current working directory within the repo.
 		scm_commit = git.run("rev-parse HEAD") # get current commit
 		update_conandata(self, {"sources": {"commit": scm_commit, "url": scm_url}})
 
