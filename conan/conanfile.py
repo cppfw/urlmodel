@@ -18,6 +18,7 @@ class UrlmodelConan(ConanFile):
 	generators = "AutotoolsDeps" # this will set CXXFLAGS etc. env vars
 
 	def requirements(self):
+
 		self.requires("utki/[>=1.1.202]@cppfw/main", transitive_headers=True)
 		self.requires("tst/[>=0.3.29]@cppfw/main", transitive_headers=True)
 
@@ -30,7 +31,10 @@ class UrlmodelConan(ConanFile):
 
 	# save commit and remote URL to conandata.yml for packaging
 	def export(self):
-		git = Git(self, self.recipe_folder)
+		# by default working directory is where conanfily.py resides,
+		# but we want git to work in the root of the repo,
+		# so we use Git(self).get_repo_root()
+		git = Git(self, Git(self).get_repo_root())
 		scm_url = git.get_remote_url()
 		scm_commit = git.get_commit()
 		update_conandata(self, {"sources": {"commit": scm_commit, "url": scm_url}})
