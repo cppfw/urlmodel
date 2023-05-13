@@ -10,4 +10,5 @@ this_cxxflags += -std=c++17
 this_cxxflags += -fPIC
 this_cxxflags += -g
 
+this_ldlibs += -fPIC
 this_ldlibs += -lstdc++
