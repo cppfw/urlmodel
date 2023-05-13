@@ -13,7 +13,10 @@ this_cxxflags += -I ../../src
 
 $(info LDLIBS = $(LDLIBS))
 $(info LDFLAGS = $(LDFLAGS))
-this_ldlibs += -lclargs -lopros -lnitki -ltst -lutki $(this_u_urlmodel_lib)
+this_ldlibs += -lewrt -lclargs -lopros -lnitki -ltst -lutki $(this_u_urlmodel_lib)
+
+$(info this_ldlibs = $(this_ldlibs))
+$(info this_ldflags = $(this_ldflags))
 
 this_no_install := true
 
