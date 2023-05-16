@@ -11,13 +11,7 @@ this_u_urlmodel_lib := ../../src/out/$(c)/liburlmodel$(dot_so)
 
 this_cxxflags += -I ../../src
 
-$(info LDLIBS = $(LDLIBS))
-$(info LIBS = $(LIBS))
-$(info LDFLAGS = $(LDFLAGS))
 this_ldlibs += -ltst -lutki $(this_u_urlmodel_lib)
-
-# $(info this_ldlibs = $(this_ldlibs))
-# $(info this_ldflags = $(this_ldflags))
 
 this_no_install := true
 
