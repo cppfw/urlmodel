@@ -3,7 +3,7 @@ project(PackageTest CXX)
 
 # set(CMAKE_VERBOSE_MAKEFILE on)
 
-find_package(utki CONFIG REQUIRED)
+find_package(urlmodel CONFIG REQUIRED)
 
 add_executable(example example.cpp)
 target_link_libraries(example urlmodel::urlmodel)
