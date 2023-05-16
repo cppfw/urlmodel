@@ -20,7 +20,7 @@ class UrlmodelConan(ConanFile):
 	def requirements(self):
 
 		self.requires("utki/[>=1.1.202]@cppfw/main", transitive_headers=True)
-		self.requires("tst/[>=0.3.29]@cppfw/main", visible=False, test=True)
+		self.requires("tst/[>=0.3.29]@cppfw/main", visible=False)
 
 	# def build_requirements(self):
 	# 	self.requires("tst/[>=0.3.28]@cppfw/main", test=True, visible=False)
