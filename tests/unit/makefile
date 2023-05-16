@@ -12,6 +12,7 @@ this_u_urlmodel_lib := ../../src/out/$(c)/liburlmodel$(dot_so)
 this_cxxflags += -I ../../src
 
 $(info LDLIBS = $(LDLIBS))
+$(info LIBS = $(LIBS))
 $(info LDFLAGS = $(LDFLAGS))
 this_ldlibs += -lclargs -lopros -lnitki -ltst -lutki $(this_u_urlmodel_lib)
 
