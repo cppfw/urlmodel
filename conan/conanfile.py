@@ -18,7 +18,6 @@ class UrlmodelConan(ConanFile):
 	generators = "AutotoolsDeps" # this will set CXXFLAGS etc. env vars
 
 	def requirements(self):
-
 		self.requires("utki/[>=1.1.202]@cppfw/main", transitive_headers=True)
 
 	def build_requirements(self):
@@ -75,6 +74,5 @@ class UrlmodelConan(ConanFile):
 		self.cpp_info.libs = [self.name]
 
 	def package_id(self):
-
 		# change package id only when minor or major version changes, i.e. when ABI breaks
 		self.info.requires.minor_mode()

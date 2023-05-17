@@ -407,7 +407,6 @@ jobs:
       - name: build
         run: |
           conan remote add cppfw $MYCI_CONAN_REMOTE
-          conan cache clean
           conan create conan --user $MYCI_CONAN_USER --channel main --version $PACKAGE_VERSION
       - name: deploy conan package
         run: |
@@ -457,7 +456,6 @@ jobs:
       - name: build
         run: |
           conan remote add cppfw $MYCI_CONAN_REMOTE
-          conan cache clean
           conan create conan --user $MYCI_CONAN_USER --channel main --version $PACKAGE_VERSION
       - name: deploy conan package
         run: |
