@@ -1,3 +1,9 @@
+liburlmodel (0.1.6) unstable; urgency=medium
+
+  * fix lint issues
+
+ -- Ivan Gagis <igagis@gmail.com>  Wed, 05 Jul 2023 11:35:51 +0300
+
 liburlmodel (0.1.5) unstable; urgency=medium
 
   * conan: deploy
