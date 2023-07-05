@@ -4,7 +4,7 @@
 #include <urlmodel/parser.hpp>
 
 namespace{
-tst::set set("urlmodel__parser", [](tst::suite& suite){
+const tst::set set("urlmodel__parser", [](tst::suite& suite){
     suite.add<std::pair<std::string, urlmodel::url>>(
         "samples",
         {
@@ -287,6 +287,7 @@ tst::set set("urlmodel__parser", [](tst::suite& suite){
             // TODO: feed by several batches
 
             auto span = utki::make_span(
+                // NOLINTNEXTLINE(cppcoreguidelines-pro-type-reinterpret-cast)
                 reinterpret_cast<const uint8_t*>(p.first.data()),
                 p.first.size()
             );

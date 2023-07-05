@@ -4,7 +4,7 @@
 #include <urlmodel/url.hpp>
 
 namespace{
-tst::set set("urlmodel__url", [](tst::suite& suite){
+const tst::set set("urlmodel__url", [](tst::suite& suite){
     suite.add<std::pair<
         std::vector<std::string>,
         std::vector<std::string>
