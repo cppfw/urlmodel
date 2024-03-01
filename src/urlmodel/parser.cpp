@@ -59,8 +59,8 @@ utki::span<const uint8_t> parser::parse_scheme(utki::span<const uint8_t> data)
 				throw std::invalid_argument(ss.str());
 			}
 		} else {
-			if (!(std::isalpha(c, std::locale::classic()) || std::isdigit(c, std::locale::classic()) || c == '+'
-				  || c == '-' || c == '.'))
+			if (!(std::isalpha(c, std::locale::classic()) || std::isdigit(c, std::locale::classic()) || c == '+' ||
+				  c == '-' || c == '.'))
 			{
 				std::stringstream ss;
 				ss << "urlmodel: URL scheme contains forbidden character: " << c;

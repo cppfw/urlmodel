@@ -32,9 +32,9 @@ using namespace urlmodel;
 
 bool url::operator==(const urlmodel::url& url) const noexcept
 {
-	return this->scheme == url.scheme && this->username == url.username && this->password == url.password
-		&& this->host == url.host && this->port == url.port && this->path == url.path && this->query == url.query
-		&& this->fragment == url.fragment;
+	return this->scheme == url.scheme && this->username == url.username && this->password == url.password &&
+		this->host == url.host && this->port == url.port && this->path == url.path && this->query == url.query &&
+		this->fragment == url.fragment;
 }
 
 std::string url::to_string() const

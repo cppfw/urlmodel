@@ -20,7 +20,7 @@ Description: cross-platform URL model C++ library.
 
 Package: liburlmodel$(soname)-dbgsrc
 Section: debug
-Architecture: any
+Architecture: all
 Depends: liburlmodel$(soname)-dbgsym (= ${binary:Version}), ${misc:Depends}
 Description: debugging sources for liburlmodel$(soname) package.
 
