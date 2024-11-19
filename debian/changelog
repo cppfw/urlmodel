@@ -1,3 +1,9 @@
+liburlmodel (0.1.9) unstable; urgency=medium
+
+  * ubuntu noble build
+
+ -- Ivan Gagis <igagis@gmail.com>  Tue, 19 Nov 2024 22:47:37 +0200
+
 liburlmodel (0.1.8) unstable; urgency=medium
 
   * fix homebrew packaging
