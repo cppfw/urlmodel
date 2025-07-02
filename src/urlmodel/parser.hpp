@@ -35,65 +35,68 @@ namespace urlmodel {
 // TODO: why lint complains?
 // "error: an exception may be thrown in function 'parser'"
 // NOLINTNEXTLINE(bugprone-exception-escape)
-class parser {
-  enum class state {
-    scheme,
-    authority_prefix,
-    authority,
-    path,
-    query_name,
-    query_value,
-    fragment,
-    end
-  };
+class parser
+{
+	enum class state {
+		scheme,
+		authority_prefix,
+		authority,
+		path,
+		query_name,
+		query_value,
+		fragment,
+		end
+	};
 
-  state cur_state = state::scheme;
+	state cur_state = state::scheme;
 
-  std::vector<uint8_t> buf;
+	std::vector<uint8_t> buf;
 
-  utki::span<const uint8_t> parse_scheme(utki::span<const uint8_t> data);
-  utki::span<const uint8_t>
-  parse_authority_prefix(utki::span<const uint8_t> data);
-  utki::span<const uint8_t> parse_authority(utki::span<const uint8_t> data);
-  utki::span<const uint8_t> parse_path(utki::span<const uint8_t> data);
-  utki::span<const uint8_t> parse_query_name(utki::span<const uint8_t> data);
-  utki::span<const uint8_t> parse_query_value(utki::span<const uint8_t> data);
-  utki::span<const uint8_t> parse_fragment(utki::span<const uint8_t> data);
+	utki::span<const uint8_t> parse_scheme(utki::span<const uint8_t> data);
+	utki::span<const uint8_t> parse_authority_prefix(utki::span<const uint8_t> data);
+	utki::span<const uint8_t> parse_authority(utki::span<const uint8_t> data);
+	utki::span<const uint8_t> parse_path(utki::span<const uint8_t> data);
+	utki::span<const uint8_t> parse_query_name(utki::span<const uint8_t> data);
+	utki::span<const uint8_t> parse_query_value(utki::span<const uint8_t> data);
+	utki::span<const uint8_t> parse_fragment(utki::span<const uint8_t> data);
 
-  void handle_end_of_authority();
-  void handle_end_of_path_segment();
-  void handle_end_of_query_value();
+	void handle_end_of_authority();
+	void handle_end_of_path_segment();
+	void handle_end_of_query_value();
 
-  // for storing query name until query value is parsed
-  std::string parsed_query_name;
+	// for storing query name until query value is parsed
+	std::string parsed_query_name;
 
 public:
-  urlmodel::url url;
+	urlmodel::url url;
 
-  /**
+	/**
    * @brief Feed data portion to parse.
    * @param data - portion of data to parse.
    * @return span remained after parsing. It can be non-empty in case
    *     URI end has been encountered in the middle of the fed data.
    * @throw std::invalid_argument in case of malformed URL.
    */
-  utki::span<const uint8_t> feed(utki::span<const uint8_t> data);
+	utki::span<const uint8_t> feed(utki::span<const uint8_t> data);
 
-  /**
+	/**
    * @brief End of input data reached.
    * This function tells parser that end of input data has been reached. The
    * parser state will be set to 'end'. This function doesn't have to be called
    * in case URL is terminated by a whitespace, in this case parser state will
    * be set to 'end' when this whitespace is reached.
    */
-  void end_of_data();
+	void end_of_data();
 
-  /**
+	/**
    * @brief Check if end of URL is reached.
    * @return true if end of URL is reached.
    * @return false otherwise.
    */
-  bool is_end() const noexcept { return this->cur_state == state::end; }
+	bool is_end() const noexcept
+	{
+		return this->cur_state == state::end;
+	}
 };
 
 } // namespace urlmodel

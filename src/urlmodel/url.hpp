@@ -35,35 +35,35 @@ SOFTWARE.
 namespace urlmodel {
 
 struct path_less {
-  // allow comparing different types (heterogeneous comparison),
-  // for automatic conversion of arguments
-  // from std::vector<std::string> to utki::span<std::string>
-  using is_transparent = int;
+	// allow comparing different types (heterogeneous comparison),
+	// for automatic conversion of arguments
+	// from std::vector<std::string> to utki::span<std::string>
+	using is_transparent = int;
 
-  bool operator()(utki::span<const std::string> a,
-                  utki::span<const std::string> b) const noexcept;
+	bool operator()(utki::span<const std::string> a, utki::span<const std::string> b) const noexcept;
 };
 
 // TODO: why lint complains?
 // "error: an exception may be thrown in function 'url'"
 // NOLINTNEXTLINE(bugprone-exception-escape)
-class url {
+class url
+{
 public:
-  std::string scheme;
+	std::string scheme;
 
-  std::string username;
-  std::string password;
+	std::string username;
+	std::string password;
 
-  std::string host;
-  uint16_t port = 0;
+	std::string host;
+	uint16_t port = 0;
 
-  std::vector<std::string> path;
-  std::map<std::string, std::string> query;
-  std::string fragment;
+	std::vector<std::string> path;
+	std::map<std::string, std::string> query;
+	std::string fragment;
 
-  bool operator==(const urlmodel::url &url) const noexcept;
+	bool operator==(const urlmodel::url& url) const noexcept;
 
-  std::string to_string() const;
+	std::string to_string() const;
 };
 
 } // namespace urlmodel
