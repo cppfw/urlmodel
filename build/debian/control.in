@@ -3,40 +3,56 @@ Section: libs
 Priority: extra
 Maintainer: Ivan Gagis <igagis@gmail.com>
 Build-Depends: debhelper (>= 9), prorab, prorab-extra,
-		libc6-dev,
-		libutki-dev,
-		libtst-dev,
-		clang-format,
-		clang-tidy
+	libc6-dev,
+	libutki-dev,
+	libtst-dev,
+	clang-format,
+	clang-tidy
 Build-Depends-Indep: doxygen
 Standards-Version: 3.9.2
 
 Package: liburlmodel$(soname)
 Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends:
+	${shlibs:Depends},
+	${misc:Depends}
 Description: cross-platform URL model C++ library.
- URL model library.
+	URL model library.
+
+Package: liburlmodel-dbg$(soname)
+Section: libs
+Architecture: any
+Depends:
+	${shlibs:Depends},
+	${misc:Depends}
+Description: cross-platform URL model C++ library.
+	Debug version of liburlmodel.
 
 Package: liburlmodel$(soname)-dbgsrc
 Section: debug
 Architecture: all
-Depends: liburlmodel$(soname)-dbgsym (= ${binary:Version}), ${misc:Depends}
+Depends:
+	liburlmodel$(soname)-dbgsym (= ${binary:Version}),
+	liburlmodel-dbg$(soname)-dbgsym (= ${binary:Version}),
+	${misc:Depends}
 Description: debugging sources for liburlmodel$(soname) package.
 
 Package: liburlmodel-dev
 Section: libdevel
 Architecture: any
 Depends:
-	libutki-dev,
-	liburlmodel$(soname) (= ${binary:Version}), ${misc:Depends}
+	liburlmodel$(soname) (= ${binary:Version}),
+	liburlmodel-dbg$(soname) (= ${binary:Version}),
+	${misc:Depends},
+	libutki-dev
 Suggests: liburlmodel-doc
 Description: cross-platform URL model C++ library.
- URL model library.
+	URL model library.
 
 Package: liburlmodel-doc
 Section: doc
 Architecture: all
 Depends: ${misc:Depends}
 Description: documentation for liburlmodel library.
- For more details see description to liburlmodel-dev package.
+	For more details see description to liburlmodel-dev package.
