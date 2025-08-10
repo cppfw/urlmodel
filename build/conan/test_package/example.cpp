@@ -1,5 +1,7 @@
 #include <urlmodel/url.hpp>
 
+#include <iostream>
+
 int main(int argc, const char** argv){
 	urlmodel::url url;
 
