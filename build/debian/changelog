@@ -1,3 +1,9 @@
+liburlmodel (0.1.12) unstable; urgency=medium
+
+  * debian: fix dbgsrc path
+
+ -- Ivan Gagis <igagis@gmail.com>  Thu, 06 Nov 2025 16:13:42 +0200
+
 liburlmodel (0.1.11) unstable; urgency=medium
 
   * debian trixie build
