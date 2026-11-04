@@ -34,9 +34,9 @@ const tst::set set("urlmodel__url", [](tst::suite& suite){
             }
         },
         [](const auto& p){
-            tst::check(urlmodel::path_less()(p.first, p.second), SL) << "\n"
+            tst::check(urlmodel::path_less()(p.first, p.second), [&](auto& o){o << "\n"
                 << "a = " << utki::make_span(p.first) << "\n"
-                << "b = " << utki::make_span(p.second) << "\n";
+                << "b = " << utki::make_span(p.second) << "\n";}, SL);
         }
     );
 
@@ -77,9 +77,9 @@ const tst::set set("urlmodel__url", [](tst::suite& suite){
             }
         },
         [](const auto& p){
-            tst::check(!urlmodel::path_less()(p.first, p.second), SL) << "\n"
+            tst::check(!urlmodel::path_less()(p.first, p.second), [&](auto& o){o << "\n"
                 << "a = " << utki::make_span(p.first) << "\n"
-                << "b = " << utki::make_span(p.second) << "\n";
+                << "b = " << utki::make_span(p.second) << "\n";}, SL);
         }
     );
 });

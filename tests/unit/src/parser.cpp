@@ -297,9 +297,9 @@ const tst::set set("urlmodel__parser", [](tst::suite& suite){
 
             tst::check(parser.is_end(), SL);
 
-            tst::check(parser.url == p.second, SL)
+            tst::check(parser.url == p.second, [&](auto& o){o
                 << "parsed = \n\t" << parser.url.to_string() << "\n"
-                << "expected = \n\t" << p.second.to_string() << "\n";
+                << "expected = \n\t" << p.second.to_string() << "\n";}, SL);
         }
     );
 });
