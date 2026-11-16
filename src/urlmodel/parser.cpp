@@ -82,11 +82,11 @@ utki::span<const uint8_t> parser::parse_authority_prefix(utki::span<const uint8_
 
 		if (c != '/') {
 			if (std::isspace(c, std::locale::classic())) {
-				ASSERT(this->buf.empty() || (this->buf.size() == 1 && this->buf[0] == '/'))
+				utki::assert(this->buf.empty() || (this->buf.size() == 1 && this->buf[0] == '/'), SL);
 				this->cur_state = state::end;
 				break;
 			} else if (c == '?') {
-				ASSERT(this->buf.empty() || (this->buf.size() == 1 && this->buf[0] == '/'))
+				utki::assert(this->buf.empty() || (this->buf.size() == 1 && this->buf[0] == '/'), SL);
 
 				// the path will be empty in any case, even if one '/' was present
 				// before '?'
@@ -96,7 +96,7 @@ utki::span<const uint8_t> parser::parse_authority_prefix(utki::span<const uint8_
 				++i;
 				break;
 			} else if (c == '#') {
-				ASSERT(this->buf.empty() || (this->buf.size() == 1 && this->buf[0] == '/'))
+				utki::assert(this->buf.empty() || (this->buf.size() == 1 && this->buf[0] == '/'), SL);
 
 				// the path will be empty in any case, even if one '/' was present
 				// before '?'
@@ -106,7 +106,7 @@ utki::span<const uint8_t> parser::parse_authority_prefix(utki::span<const uint8_
 				++i;
 				break;
 			} else if (this->buf.size() == 1) {
-				ASSERT(this->buf[0] == '/')
+				utki::assert(this->buf[0] == '/', SL);
 				// path starts with single '/' character
 				this->buf.clear();
 				this->cur_state = state::path;
@@ -115,15 +115,15 @@ utki::span<const uint8_t> parser::parse_authority_prefix(utki::span<const uint8_
 			throw std::invalid_argument("urlmodel: authority must start with // or be absent");
 		}
 
-		ASSERT(this->buf.size() <= 1)
+		utki::assert(this->buf.size() <= 1, SL);
 
 		if (this->buf.empty()) {
 			this->buf.push_back('/');
 			continue;
 		}
 
-		ASSERT(this->buf.size() == 1)
-		ASSERT(this->buf[0] == '/')
+		utki::assert(this->buf.size() == 1, SL);
+		utki::assert(this->buf[0] == '/', SL);
 
 		this->buf.clear();
 		this->cur_state = state::authority;
@@ -140,7 +140,7 @@ void parser::handle_end_of_authority()
 
 	auto at_pos = str.find('@');
 	if (at_pos != std::string_view::npos) {
-		ASSERT(at_pos < str.size())
+		utki::assert(at_pos < str.size(), SL);
 		// there is user info in the authority
 
 		utki::string_parser p(str.substr(0, at_pos));
